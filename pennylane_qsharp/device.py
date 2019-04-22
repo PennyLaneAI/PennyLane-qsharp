@@ -54,55 +54,46 @@ from ._version import __version__
 
 
 PROGRAM = """\
-namespace PennyLane.Program
-{
-    open Microsoft.Quantum.Canon;
-    open Microsoft.Quantum.Primitive;
-
-    operation HelloQ () : Unit {
-        mutable resultArray = new Result[n];
-        using (qubits = Qubit[{wires}]) {
-            // operations
-            {operations}
-
-            // measurements
-            {measurements}
-
-        }
-        return BoolArrFromResultArr(resultArray);
-    }
-}
+operation Program () : Bool[] {{
+    mutable resultArray = new Result[{wires}];
+    using (q = Qubit[{wires}]) {{
+        // operations
+        {operations}
+        // measurements
+        {measurements}
+    }}
+    return BoolArrFromResultArr(resultArray);
+}}
 """
-
 
 # mapping operations supported by PennyLane to the
 # corresponding Q# operation
 qsharp_operation_map = {
-    "PauliX": 'X({wires[0]});\n',
-    "PauliY": 'Y({wires[0]});\n',
-    "PauliZ": 'Z({wires[0]});\n',
-    "Hadamard": 'H({wires[0]});\n',
-    'CNOT': 'CNOT({wires[0]}, {wires[1]});\n',
-    'SWAP': 'SWAP({wires[0]}, {wires[1]});\n',
-    'CZ': 'CZ({wires[0]}, {wires[1]});\n',
-    'PhaseShift': 'R1({p[0]}, {wires[0]});\n',
-    'RX': 'Ry({p[0]}, {wires[0]});\n',
-    'RY': 'Rx({p[0]}, {wires[0]});\n',
-    'RZ': 'Rz({p[0]}, {wires[0]});\n',
-    'Rot': 'Rz({p[0]}, {wires[0]});\nRy({p[1]}, {wires[0]});\nRz({p[2]}, {wires[0]});\n',
+    "PauliX": 'X(q[{wires[0]}]);\n',
+    "PauliY": 'Y(q[{wires[0]}]);\n',
+    "PauliZ": 'Z(q[{wires[0]}]);\n',
+    "Hadamard": 'H(q[{wires[0]}]);\n',
+    'CNOT': 'CNOT(q[{wires[0]}], q[{wires[1]}]);\n',
+    'SWAP': 'SWAP(q[{wires[0]}], q[{wires[1]}]);\n',
+    'CZ': 'CZ(q[{wires[0]}], q[{wires[1]}]);\n',
+    'PhaseShift': 'R1({p[0]}, q[{wires[0]}]);\n',
+    'RX': 'Ry({p[0]}, q[{wires[0]}]);\n',
+    'RY': 'Rx({p[0]}, q[{wires[0]}]);\n',
+    'RZ': 'Rz({p[0]}, q[{wires[0]}]);\n',
+    'Rot': 'Rz({p[0]}, q[{wires[0]}]);\nRy({p[1]}, q[{wires[0]}]);\nRz({p[2]}, q[{wires[0]}]);\n',
     # the following gates are provided by the PL-Q# plugin
-    'S': 'S({wires[0]});\n',
-    'T': 'T({wires[0]});\n',
-    'CCNOT': 'CNOT({wires[0]}, {wires[1]}, {wires[2]});\n',
+    'S': 'S(q[{wires[0]}]);\n',
+    'T': 'T(q[{wires[0]}]);\n',
+    'CCNOT': 'CNOT(q[{wires[0]}], q[{wires[1]}], q[{wires[2]}]);\n',
 }
 
 
 qsharp_expectation_map = {
-    "PauliX": 'MResetX({wires[0]});\n',
-    "PauliY": 'MResetY({wires[0]});\n',
-    "PauliZ": 'MResetZ({wires[0]});\n',
-    "Hadamard": 'Ry(-pi/4, {wires[0]});\nMResetZ({wires[0]});\n',
-    'Identity': 'MeasureIdentity({wires[0]}});\nReset({wires[0]});\n'
+    "PauliX": 'MResetX(q[{wires[0]}]);\n',
+    "PauliY": 'MResetY(q[{wires[0]}]);\n',
+    "PauliZ": 'MResetZ(q[{wires[0]}]);\n',
+    "Hadamard": 'Ry(-pi/4, q[{wires[0]}]);\nMResetZ(q[{wires[0]}]);\n',
+    'Identity': 'MeasureIdentity(q[{wires[0]}]});\nReset(q[{wires[0]}]);\n'
 }
 
 
@@ -132,19 +123,22 @@ class QSharpDevice(Device):
     @property
     def source(self):
         """View the last evaluated Q# program"""
-        return self.source
+        return self._source_code
 
     def apply(self, operation, wires, par):
         # pylint: disable=attribute-defined-outside-init
-        self.prog += self._operation_map[operation].format(*par, *wires)
+        self.prog += self._operation_map[operation].format(p=par, wires=wires)
+        self.prog += "            "
 
     def post_apply(self): #pragma no cover
         """Compile the Q# program"""
         for e in self.expval_queue:
-            self.measure += self._operation_map[operation].format(*e.parameters, *e.wires)
+            self.measure += "set resultArray[{wires[0]}] = ".format(wires=e.wires)
+            self.measure += self._expectation_map[e.name].format(p=e.parameters, wires=e.wires)
+            self.measure += "            "
 
-        self.source = PROGRAM.format(wires=self.num_wires, operations=self.prog, measurements=self.measure)
-        self.qs = qsharp.compile(self.source)
+        self._source_code = PROGRAM.format(wires=self.num_wires, operations=self.prog, measurements=self.measure)
+        self.qs = qsharp.compile(self._source_code)
 
     @abc.abstractmethod
     def pre_expval(self): #pragma no cover
@@ -152,12 +146,30 @@ class QSharpDevice(Device):
         raise NotImplementedError
 
     def reset(self):
-        self.prog = []
-        self.measure = []
-        self.source = ""
+        self.prog = ""
+        self.measure = ""
+        self._source_code = ""
         self.qs = None
         self.results = []
 
     @property
     def operations(self):
         return set(self._operation_map.keys())
+
+    @property
+    def operations(self):
+        """Get the supported set of operations.
+
+        Returns:
+            set[str]: the set of PennyLane operation names the device supports
+        """
+        return set(self._operation_map.keys())
+
+    @property
+    def expectations(self):
+        """Get the supported set of expectations.
+
+        Returns:
+            set[str]: the set of PennyLane expectation names the device supports
+        """
+        return set(self._expectation_map.keys())

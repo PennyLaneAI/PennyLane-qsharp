@@ -37,7 +37,7 @@ from .device import QSharpDevice
 from ._version import __version__
 
 
-class QuantumSimulator(QSharpDevice):
+class QuantumSimulatorDevice(QSharpDevice):
     r"""Microsoft Q# full state simulator for PennyLane.
 
 
@@ -53,7 +53,7 @@ class QuantumSimulator(QSharpDevice):
         """Run the simulator"""
         # pylint: disable=attribute-defined-outside-init
         for i in range(self.shots):
-            self.results.append(self.qs.simulate())
+            self.results.append([1-2*int(i) for i in self.qs.simulate()])
 
     def expval(self, expectation, wires, par):
-        return np.mean(self.results[wires[0]])
+        return np.mean(np.array(self.results).T[wires[0]])
