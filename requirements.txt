@@ -1,0 +1,2 @@
+qsharp
+pennylane>=0.3
