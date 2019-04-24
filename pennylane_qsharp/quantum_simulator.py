@@ -19,14 +19,14 @@ QuantumSimulator Device
 
 .. currentmodule:: pennylane_qsharp.quantum_simulator
 
-This module contains the :class:`~.QuantumSimulator` class, a PennyLane device that allows
+This module contains the :class:`~.QuantumSimulatorDevice` class, a PennyLane device that allows
 evaluation and differentiation of Microsoft's full state simulator using PennyLane.
 
 Classes
 -------
 
 .. autosummary::
-   QuantumSimulator
+   QuantumSimulatorDevice
 
 Code details
 ~~~~~~~~~~~~

@@ -19,19 +19,9 @@ Base Q# device class
 
 .. currentmodule:: pennylane_qsharp.device
 
-This module contains a base class for constructing Q# devices for PennyLane,
-as well as some auxillary functions for converting PennyLane supported operations
-(such as ``BasisState``, ``Rot``) to the equivalent Q# operations.
+This module contains a base class for constructing Q# devices for PennyLane.
 
 This class provides all the boilerplate for supporting Q# devices on PennyLane.
-
-Auxiliary functions
--------------------
-
-.. autosummary::
-    basis_state
-    rotation
-    controlled_phase
 
 Classes
 -------

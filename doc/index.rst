@@ -6,8 +6,8 @@ PennyLane Q# Plugin
 
 
 
-This plugin allows two Microsoft Quantum Development Toolkit
-devices to work with PennyLane - the `QuantumSimulator` full state simulator, and the `ToffoliSimulator`.
+This plugin allows Microsoft Quantum Development Toolkit
+devices to work with PennyLane.
 
 `The Microsoft Quantum Development Kit <https://www.microsoft.com/en-us/quantum/development-kit>`_ is an open-source
 library for quantum programming using the .NET Q# quantum programming language. Resulting quantum programs
@@ -21,9 +21,8 @@ automatic differentiation of hybrid quantum-classical computations.
 Features
 ========
 
-* Provides two devices to be used with PennyLane: ``microsoft.QuantumSimulator`` and
-  ``microsoft.ToffoliSimulator``. These provide access to the local full state simulator and restricted
-  Toffoli simulator respectively.
+* Provides a Microsoft QDK device to be used with PennyLane: ``microsoft.QuantumSimulator``.
+  This provides access to the local full state simulator.
 
 
 * All provided devices support all core qubit PennyLane operations and expectation values.
@@ -38,7 +37,7 @@ Features
 
 
 
-To get started with the PennyLane Q# plugin, follow the :ref:`installation steps <installation>`, then see the :ref:`usage <usage>` page.
+To get started with the PennyLane Q# plugin, follow the :ref:`installation steps <installation>`.
 
 Authors
 =======
@@ -55,7 +54,6 @@ Contents
    :caption: Getting started
 
    installing
-   usage
 
 .. rst-class:: contents local topic
 
@@ -66,4 +64,3 @@ Contents
    code/ops
    code/device
    code/quantum_simulator
-   code/toffoli_simulator

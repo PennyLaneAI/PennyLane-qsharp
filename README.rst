@@ -1,8 +1,8 @@
 PennyLane Q# Plugin
 ###################
 
-Contains the PennyLane Q# plugin. This plugin allows two Microsoft Quantum Development Toolkit
-devices to work with PennyLane - the `QuantumSimulator` full state simulator, and the `ToffoliSimulator`.
+Contains the PennyLane Q# plugin. This plugin allows the full state simulator from the Microsoft Quantum Development Toolkit
+devices to work with PennyLane.
 
 `The Microsoft Quantum Development Kit <https://www.microsoft.com/en-us/quantum/development-kit>`_ is an open-source
 library for quantum programming using the .NET Q# quantum programming language. Resulting quantum programs
@@ -15,9 +15,8 @@ automatic differentiation of hybrid quantum-classical computations.
 Features
 ========
 
-* Provides two devices to be used with PennyLane: ``microsoft.QuantumSimulator`` and
-  ``microsoft.ToffoliSimulator``. These provide access to the local full state simulator and restricted
-  Toffoli simulator respectively.
+* Provides a Microsoft QDK device to be used with PennyLane: ``microsoft.QuantumSimulator``.
+  This provides access to the local full state simulator.
 
 
 * All provided devices support all core qubit PennyLane operations and expectation values.
@@ -50,17 +49,15 @@ Getting started
 
 Once the PennyLane Q# plugin is installed, the provided QDK devices can be accessed straight away in PennyLane.
 
-You can instantiate these devices for PennyLane as follows:
+You can instantiate provided devices for PennyLane as follows:
 
 .. code-block:: python
 
     import pennylane as qml
     dev = qml.device('microsoft.QuantumSimulator', wires=2, shots=1000)
-    dev = qml.device('forest.ToffoliSimulator', wires=3, shots=1000)
 
 These devices can then be used just like other devices for the definition and evaluation of QNodes within PennyLane.
-For more details, see the `plugin usage guide <https://pennylane-qsharp.readthedocs.io/en/latest/usage.html>`_ and
-refer to the PennyLane documentation.
+For more details, refer to the PennyLane documentation.
 
 
 Contributing

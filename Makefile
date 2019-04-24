@@ -7,18 +7,16 @@ TESTRUNNER := -m pytest tests
 .PHONY: help
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
-	@echo "  install            to install PennyLane-Forest"
-	@echo "  wheel              to build the PennyLane-Forest wheel"
+	@echo "  install            to install PennyLane-Q#"
+	@echo "  wheel              to build the PennyLane-Q# wheel"
 	@echo "  dist               to package the source distribution"
 	@echo "  clean              to delete all temporary, cache, and build files"
 	@echo "  clean-docs         to delete all built documentation"
-	@echo "  test               to run the test suite"
-	@echo "  coverage           to generate a coverage report"
 
 .PHONY: install
 install:
 ifndef PYTHON3
-	@echo "To install PennyLane-Forest you need to have Python 3 installed"
+	@echo "To install PennyLane-Q# you need to have Python 3 installed"
 endif
 	$(PYTHON) setup.py install
 
@@ -45,11 +43,3 @@ docs:
 .PHONY : clean-docs
 clean-docs:
 	make -C doc clean
-
-
-test:
-	$(PYTHON) $(TESTRUNNER)
-
-coverage:
-	@echo "Generating coverage report..."
-	$(PYTHON) $(TESTRUNNER) $(COVERAGE)

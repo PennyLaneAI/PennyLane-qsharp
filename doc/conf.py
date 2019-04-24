@@ -14,12 +14,29 @@
 # serve to show the default.
 
 import sys, os, re
+from unittest.mock import MagicMock, PropertyMock
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('_ext'))
+
+# Mock out all modules that aren't required for compiling of documentation
+class Mock(MagicMock):
+    __name__ = 'foo'
+
+    @classmethod
+    def __getattr__(cls, name):
+        return MagicMock()
+
+MOCK_MODULES = [
+    'qsharp'
+    ]
+
+mock = Mock()
+for mod_name in MOCK_MODULES:
+    sys.modules[mod_name] = mock
 
 # -- General configuration ------------------------------------------------
 
