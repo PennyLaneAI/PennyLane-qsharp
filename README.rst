@@ -1,6 +1,10 @@
 PennyLane Q# Plugin
 ###################
 
+.. image:: https://img.shields.io/readthedocs/pennylane-qsharp.svg?style=for-the-badge
+  :target: https://pennylane-qsharp.readthedocs.io
+  :alt: Documentation
+
 Contains the PennyLane Q# plugin. This plugin allows the full state simulator from the Microsoft Quantum Development Toolkit
 devices to work with PennyLane.
 
