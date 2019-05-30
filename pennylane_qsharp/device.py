@@ -51,6 +51,8 @@ operation Program () : Bool[] {{
         {operations}
         // measurements
         {measurements}
+        // reset all qubits
+        ResetAll(q);
     }}
     return BoolArrFromResultArr(resultArray);
 }}

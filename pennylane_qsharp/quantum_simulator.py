@@ -46,7 +46,7 @@ class QuantumSimulatorDevice(QSharpDevice):
             to estimate expectation values of expectations.
         noisy (bool): set to ``True`` to add noise models to your QVM.
     """
-    name = 'Microsoft Q# full state simulatord device'
+    name = 'Microsoft Q# full state simulator device'
     short_name = 'microsoft.QuantumSimulator'
 
     def pre_expval(self):
