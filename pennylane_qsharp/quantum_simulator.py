@@ -43,17 +43,20 @@ class QuantumSimulatorDevice(QSharpDevice):
 
     Args:
         shots (int): number of circuit evaluations/random samples used
-            to estimate expectation values of expectations.
+            to estimate expectation values of observables.
         noisy (bool): set to ``True`` to add noise models to your QVM.
     """
     name = 'Microsoft Q# full state simulator device'
     short_name = 'microsoft.QuantumSimulator'
 
-    def pre_expval(self):
+    def pre_measure(self):
         """Run the simulator"""
         # pylint: disable=attribute-defined-outside-init
         for i in range(self.shots):
             self.results.append([1-2*int(i) for i in self.qs.simulate()])
 
-    def expval(self, expectation, wires, par):
+    def expval(self, observable, wires, par):
         return np.mean(np.array(self.results).T[wires[0]])
+
+    def var(self, observable, wires, par):
+        return np.var(np.array(self.results).T[wires[0]])

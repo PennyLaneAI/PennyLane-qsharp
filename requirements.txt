@@ -1,2 +1,2 @@
 qsharp
-pennylane>=0.3
+pennylane>=0.4
