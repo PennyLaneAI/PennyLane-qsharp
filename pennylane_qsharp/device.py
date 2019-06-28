@@ -80,7 +80,7 @@ qsharp_operation_map = {
 }
 
 
-qsharp_expectation_map = {
+qsharp_observable_map = {
     "PauliX": 'MResetX(q[{wires[0]}]);\n',
     "PauliY": 'MResetY(q[{wires[0]}]);\n',
     "PauliZ": 'MResetZ(q[{wires[0]}]);\n',
@@ -95,15 +95,15 @@ class QSharpDevice(Device):
     Args:
         wires (int): the number of modes to initialize the device in
         shots (int): Number of circuit evaluations/random samples used
-            to estimate expectation values of expectations.
+            to estimate expectation values of observables.
             For simulator devices, 0 means the exact EV is returned.
     """
-    pennylane_requires = '>=0.2'
+    pennylane_requires = '>=0.4'
     version = __version__
     author = 'Josh Izaac'
 
     _operation_map = qsharp_operation_map
-    _expectation_map = qsharp_expectation_map
+    _observable_map = qsharp_observable_map
 
     def __init__(self, wires, shots=1024, **kwargs):
         if shots <= 0:
@@ -124,16 +124,16 @@ class QSharpDevice(Device):
 
     def post_apply(self): #pragma no cover
         """Compile the Q# program"""
-        for e in self.expval_queue:
+        for e in self.obs_queue:
             self.measure += "set resultArray[{wires[0]}] = ".format(wires=e.wires)
-            self.measure += self._expectation_map[e.name].format(p=e.parameters, wires=e.wires)
+            self.measure += self._observable_map[e.name].format(p=e.parameters, wires=e.wires)
             self.measure += "            "
 
         self._source_code = PROGRAM.format(wires=self.num_wires, operations=self.prog, measurements=self.measure)
         self.qs = qsharp.compile(self._source_code)
 
     @abc.abstractmethod
-    def pre_expval(self): #pragma no cover
+    def pre_measure(self): #pragma no cover
         """Run the simulation"""
         raise NotImplementedError
 
@@ -158,10 +158,10 @@ class QSharpDevice(Device):
         return set(self._operation_map.keys())
 
     @property
-    def expectations(self):
-        """Get the supported set of expectations.
+    def observables(self):
+        """Get the supported set of observables.
 
         Returns:
-            set[str]: the set of PennyLane expectation names the device supports
+            set[str]: the set of PennyLane observable names the device supports
         """
-        return set(self._expectation_map.keys())
+        return set(self._observable_map.keys())

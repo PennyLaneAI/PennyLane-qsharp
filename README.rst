@@ -23,7 +23,7 @@ Features
   This provides access to the local full state simulator.
 
 
-* All provided devices support all core qubit PennyLane operations and expectation values.
+* All provided devices support all core qubit PennyLane operations and observables.
 
 
 * Provides custom PennyLane operations to cover additional Q# operations, including
