@@ -18,7 +18,7 @@ info = {
     'version': version,
     'maintainer': 'Xanadu Inc.',
     'maintainer_email': 'josh@xanadu.ai',
-    'url': 'http://xanadu.ai',
+    'url': 'https://github.com/XanaduAI/pennylane-qsharp',
     'license': 'Apache License 2.0',
     'packages': [
                     'pennylane_qsharp'
