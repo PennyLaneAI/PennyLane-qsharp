@@ -43,7 +43,10 @@ from pennylane import Device
 from ._version import __version__
 
 
-PROGRAM = """\
+PROGRAM = """
+open Microsoft.Quantum.Convert;
+open Microsoft.Quantum.Measurement;
+
 operation Program () : Bool[] {{
     mutable resultArray = new Result[{wires}];
     using (q = Qubit[{wires}]) {{
@@ -54,7 +57,7 @@ operation Program () : Bool[] {{
         // reset all qubits
         ResetAll(q);
     }}
-    return BoolArrFromResultArr(resultArray);
+    return ResultArrayAsBoolArray(resultArray);
 }}
 """
 
@@ -125,7 +128,7 @@ class QSharpDevice(Device):
     def post_apply(self): #pragma no cover
         """Compile the Q# program"""
         for e in self.obs_queue:
-            self.measure += "set resultArray[{wires[0]}] = ".format(wires=e.wires)
+            self.measure += "set resultArray w/= {wires[0]} <- ".format(wires=e.wires)
             self.measure += self._observable_map[e.name].format(p=e.parameters, wires=e.wires)
             self.measure += "            "
 
@@ -143,10 +146,6 @@ class QSharpDevice(Device):
         self._source_code = ""
         self.qs = None
         self.results = []
-
-    @property
-    def operations(self):
-        return set(self._operation_map.keys())
 
     @property
     def operations(self):
