@@ -101,7 +101,7 @@ class QSharpDevice(Device):
             to estimate expectation values of observables.
             For simulator devices, 0 means the exact EV is returned.
     """
-    pennylane_requires = '>=0.4'
+    pennylane_requires = '>=0.6'
     version = __version__
     author = 'Josh Izaac'
 
