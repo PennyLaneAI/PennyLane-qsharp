@@ -108,6 +108,8 @@ class QSharpDevice(Device):
     _operation_map = qsharp_operation_map
     _observable_map = qsharp_observable_map
 
+    _capabilities = {"model": 'qubit'}
+
     def __init__(self, wires, shots=1024, **kwargs):
         if shots <= 0:
             raise ValueError("Number of shots must be a positive integer.")
