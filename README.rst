@@ -1,9 +1,12 @@
 PennyLane Q# Plugin
 ###################
 
-.. image:: https://img.shields.io/readthedocs/pennylane-qsharp.svg?style=for-the-badge
-  :target: https://pennylane-qsharp.readthedocs.io
-  :alt: Documentation
+.. image:: doc/_static/puzzle.png
+    :align: center
+    :width: 200px
+    :target: javascript:void(0);
+
+|
 
 .. header-start-inclusion-marker-do-not-remove
 
@@ -19,6 +22,7 @@ learning, automatic differentiation, and optimization of hybrid quantum-classica
 
 .. header-end-inclusion-marker-do-not-remove
 
+The documentation can be found at `https://pennylane-qsharp.readthedocs.io`_.
 
 Features
 ========
