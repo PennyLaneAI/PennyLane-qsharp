@@ -33,6 +33,19 @@ Currently, PennyLane-Q# provides one Q# device for PennyLane:
         <div style='clear:both'></div>
         </br>
 
+Tutorials
+~~~~~~~~~
+
+To see the PennyLane-Q# plugin in action, you can use any of the qubit based `demos
+from the PennyLane documentation <https://pennylane.ai/qml/demonstrations.html>`_, for example
+the tutorial on `qubit rotation <https://pennylane.ai/qml/demos/tutorial_qubit_rotation.html>`_,
+and simply replace ``'default.qubit'`` with any of the available ProjectQ devices, such as
+``'microsoft.QuantumSimulator'``:
+
+.. code-block:: python
+
+    dev = qml.device('projectq.simulator', wires=XXX)
+
 
 .. toctree::
    :maxdepth: 2
