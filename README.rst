@@ -1,29 +1,10 @@
 PennyLane Q# Plugin
 ###################
 
-.. image:: https://img.shields.io/travis/com/XanaduAI/pennylane-qiskit/master.svg?style=popout-square
-    :alt: Travis
-    :target: https://travis-ci.com/XanaduAI/pennylane-qsharp
-
-.. image:: https://img.shields.io/codecov/c/github/XanaduAI/pennylane-qiskit/master.svg?style=popout-square
-    :alt: Codecov coverage
-    :target: https://codecov.io/gh/XanaduAI/pennylane-qsharp
-
-.. image:: https://img.shields.io/codacy/grade/f4132f03ce224f82bd3e8ba436b52af3.svg?style=popout-square
-    :alt: Codacy grade
-    :target: https://www.codacy.com/app/XanaduAI/pennylane-qsharp
-
 .. image:: https://img.shields.io/readthedocs/pennylane-qiskit.svg?style=popout-square
     :alt: Read the Docs
     :target: https://pennylaneqsharp.readthedocs.io
 
-.. image:: https://img.shields.io/pypi/v/PennyLane-qiskit.svg?style=popout-square
-    :alt: PyPI
-    :target: https://pypi.org/project/PennyLane-qsharp
-
-.. image:: https://img.shields.io/pypi/pyversions/PennyLane-qiskit.svg?style=popout-square
-    :alt: PyPI - Python Version
-    :target: https://pypi.org/project/PennyLane-qsharp
 
 .. image:: doc/_static/puzzle.png
     :align: center
