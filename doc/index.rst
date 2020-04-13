@@ -44,7 +44,7 @@ and simply replace ``'default.qubit'`` with any of the available ProjectQ device
 
 .. code-block:: python
 
-    dev = qml.device('projectq.simulator', wires=XXX)
+    dev = qml.device('microsoft.QuantumSimulator', wires=XXX)
 
 
 .. toctree::
