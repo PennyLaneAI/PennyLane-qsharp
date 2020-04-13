@@ -5,15 +5,19 @@ PennyLane Q# Plugin
   :target: https://pennylane-qsharp.readthedocs.io
   :alt: Documentation
 
-Contains the PennyLane Q# plugin. This plugin allows the full state simulator from the Microsoft Quantum Development Toolkit
-devices to work with PennyLane.
+.. header-start-inclusion-marker-do-not-remove
+
+The PennyLane Q# plugin integrates the Q# quantum computing framework with PennyLane's
+quantum machine learning capabilities.
 
 `The Microsoft Quantum Development Kit <https://www.microsoft.com/en-us/quantum/development-kit>`_ is an open-source
 library for quantum programming using the .NET Q# quantum programming language. Resulting quantum programs
 can be executed using built in local simulators, or via the cloud-based Azure quantum simulator.
 
-`PennyLane <https://pennylane.readthedocs.io>`_ is a machine learning library for optimization and
-automatic differentiation of hybrid quantum-classical computations.
+`PennyLane <https://pennylane.readthedocs.io>`_ is a cross-platform Python library for quantum machine
+learning, automatic differentiation, and optimization of hybrid quantum-classical computations.
+
+.. header-end-inclusion-marker-do-not-remove
 
 
 Features
@@ -33,44 +37,74 @@ Features
 
 * Combine Microsoft Azure quantum simulators with PennyLane's automatic differentiation and optimization.
 
+.. installation-start-inclusion-marker-do-not-remove
 
 Installation
 ============
 
-PennyLane-qsharp requires both PennyLane and the Microsoft Quantum Development Kit. To install the
-Microsoft QDK and IQ#, `see the intruction details <https://docs.microsoft.com/en-us/quantum/install-guide/index?view=qsharp-preview>`_
-provided by Microsoft.
+This plugin requires Python version 3.6 and above, as well as PennyLane
+and Q#. Installation of this plugin, as well as all dependencies, can be done using ``pip``:
 
-Once the QDK is installed, you can install PennyLane-qsharp via ``pip``:
-
-.. code-block:: bash
-
-    $ python -m pip install pennylane-qsharp
+   	$ python -m pip install pennylane-qsharp
 
 
-Getting started
-===============
+Make sure you are using the Python 3 version of pip.
 
-Once the PennyLane Q# plugin is installed, the provided QDK devices can be accessed straight away in PennyLane.
+Alternatively, you can install PennyLane Q# from the source code by navigating to the top directory and running
+::
 
-You can instantiate provided devices for PennyLane as follows:
+	$ python setup.py install
 
-.. code-block:: python
+Dependencies
+~~~~~~~~~~~~
 
-    import pennylane as qml
-    dev = qml.device('microsoft.QuantumSimulator', wires=2, shots=1000)
+.. highlight:: bash
 
-These devices can then be used just like other devices for the definition and evaluation of QNodes within PennyLane.
-For more details, refer to the PennyLane documentation.
+PennyLane Q# requires the following libraries be installed:
+
+* `Python <http://python.org/>`_ >=3.6
+* `IQ# <https://docs.microsoft.com/en-us/quantum/install-guide/index?view=qsharp-preview>`_
+
+as well as the following Python packages:
+
+* `PennyLane <http://pennylane.readthedocs.io/>`_
+* `Q# <https://docs.microsoft.com/en-us/quantum/install-guide/python?view=qsharp-preview>`_
+
+If you currently do not have Python 3 installed, we recommend
+`Anaconda for Python 3 <https://www.anaconda.com/download/>`_, a distributed version of
+Python packaged for scientific computation.
+
+
+Software tests
+~~~~~~~~~~~~~~
+
+To ensure that PennyLane Q# is working correctly after installation,
+the test suite can be run by navigating to the source code folder and running
+::
+
+	$ make test
+
+
+Documentation
+~~~~~~~~~~~~~
+
+To build the HTML documentation, go to the top-level directory and run
+::
+
+  $ make docs
+
+The documentation can then be found in the :file:`doc/_build/html/` directory.
+
+.. installation-end-inclusion-marker-do-not-remove
 
 
 Contributing
 ============
 
-We welcome contributions - simply fork the PennyLane-qsharp repository, and then make a
+We welcome contributions - simply fork the PennyLane-Q# repository, and then make a
 `pull request <https://help.github.com/articles/about-pull-requests/>`_ containing your contribution.
 
-All contributers to PennyLane-qsharp will be listed as authors on the releases.
+All contributers to PennyLane-Q# will be listed as authors on the releases.
 
 We also encourage bug reports, suggestions for new features and enhancements, and even links to cool projects or
 applications built on PennyLane and the Microsoft QDK.
@@ -79,19 +113,30 @@ applications built on PennyLane and the Microsoft QDK.
 Authors
 =======
 
-`Josh Izaac <https://github.com/josh146>`_
+PennyLane-Q# is the work of `many contributors <https://github.com/XanaduAI/PennyLane-qsharp/graphs/contributors>`_.
 
+If you are doing research using PennyLane and PennyLane-Q#, please cite `our paper <https://arxiv.org/abs/1811.04968>`_:
+
+    Ville Bergholm, Josh Izaac, Maria Schuld, Christian Gogolin, M. Sohaib Alam, Shahnawaz Ahmed,
+    Juan Miguel Arrazola, Carsten Blank, Alain Delgado, Soran Jahangiri, Keri McKiernan, Johannes Jakob Meyer,
+    Zeyue Niu, Antal Száva, and Nathan Killoran.
+    *PennyLane: Automatic differentiation of hybrid quantum-classical computations.* 2018. arXiv:1811.04968
+
+.. support-start-inclusion-marker-do-not-remove
 
 Support
 =======
 
 - **Source Code:** https://github.com/XanaduAI/pennylane-qsharp
 - **Issue Tracker:** https://github.com/XanaduAI/pennylane-qsharp/issues
+- **PennyLane Forum:** https://discuss.pennylane.ai
 
-If you are having issues, please let us know by posting the issue on our Github issue tracker.
+If you are having issues, please let us know by posting the issue on our Github issue tracker, or
+by asking a question in the forum.
 
+.. support-end-inclusion-marker-do-not-remove
 
 License
 =======
 
-PennyLane-qsharp is **free** and **open source**, released under the Apache License, Version 2.0.
+PennyLane-Q# is **free** and **open source**, released under the Apache License, Version 2.0.
