@@ -71,7 +71,7 @@ Dependencies
 
 PennyLane Q# requires the following libraries be installed:
 
-* `Python <http://python.org/>`_ >=3.6
+* `Python <http://python.org/>`_ >= 3.6
 * `IQ# <https://docs.microsoft.com/en-us/quantum/install-guide/index?view=qsharp-preview>`_
 
 as well as the following Python packages:
