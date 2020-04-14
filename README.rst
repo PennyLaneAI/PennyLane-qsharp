@@ -51,7 +51,7 @@ Features
 Installation
 ============
 
-This plugin requires Python version 3.6 and above, as well as PennyLane
+This plugin requires Python version 3.6 or above, as well as PennyLane
 and Q#. Installation of this plugin, as well as all dependencies, can be done using ``pip``:
 
    	$ python -m pip install pennylane-qsharp
