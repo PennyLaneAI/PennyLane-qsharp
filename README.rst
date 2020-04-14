@@ -51,8 +51,7 @@ Features
 Installation
 ============
 
-This plugin requires Python version 3.6 and above, as well as PennyLane
-and Q#. Installation of this plugin, as well as all dependencies, can be done using ``pip``:
+Installation of this plugin, as well as all dependencies, can be done using ``pip``:
 
    	$ python -m pip install pennylane-qsharp
 
@@ -76,7 +75,7 @@ PennyLane Q# requires the following libraries be installed:
 
 as well as the following Python packages:
 
-* `PennyLane <http://pennylane.readthedocs.io/>`_
+* `PennyLane <http://pennylane.readthedocs.io/>`_ >= 0.6.0
 * `Q# <https://docs.microsoft.com/en-us/quantum/install-guide/python?view=qsharp-preview>`_
 
 If you currently do not have Python 3 installed, we recommend
