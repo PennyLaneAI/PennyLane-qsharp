@@ -51,7 +51,7 @@ Features
 Installation
 ============
 
-Installation of this plugin, as well as all dependencies, can be done using ``pip``:
+ Installation of this plugin, as well as all dependencies, can be done using ``pip``:
 
    	$ python -m pip install pennylane-qsharp
 
@@ -70,7 +70,7 @@ Dependencies
 
 PennyLane Q# requires the following libraries be installed:
 
-* `Python <http://python.org/>`_ >=3.6
+* `Python <http://python.org/>`_ >= 3.6
 * `IQ# <https://docs.microsoft.com/en-us/quantum/install-guide/index?view=qsharp-preview>`_
 
 as well as the following Python packages:
