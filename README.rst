@@ -1,17 +1,9 @@
 PennyLane Q# Plugin
 ###################
 
-.. image:: https://img.shields.io/readthedocs/pennylane-qiskit.svg?style=popout-square
+.. image:: https://img.shields.io/readthedocs/pennylane-qiskit.svg?logo=read-the-docs&style=popout-square
     :alt: Read the Docs
     :target: https://pennylaneqsharp.readthedocs.io
-
-
-.. image:: doc/_static/puzzle.png
-    :align: center
-    :width: 200px
-    :target: javascript:void(0);
-
-|
 
 .. header-start-inclusion-marker-do-not-remove
 
