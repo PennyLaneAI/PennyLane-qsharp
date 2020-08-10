@@ -101,7 +101,7 @@ class QSharpDevice(Device):
             to estimate expectation values of observables.
             For simulator devices, 0 means the exact EV is returned.
     """
-    pennylane_requires = '>=0.6'
+    pennylane_requires = '>=0.11.0'
     version = __version__
     author = 'Josh Izaac'
 
@@ -123,15 +123,23 @@ class QSharpDevice(Device):
         return self._source_code
 
     def apply(self, operation, wires, par):
+
+        # translate operation wire labels to the device's wire labels
+        device_wires = self.map_wires(wires)
+
         # pylint: disable=attribute-defined-outside-init
-        self.prog += self._operation_map[operation].format(p=par, wires=wires)
+        self.prog += self._operation_map[operation].format(p=par, wires=device_wires.tolist())
         self.prog += "            "
 
     def post_apply(self): #pragma no cover
         """Compile the Q# program"""
         for e in self.obs_queue:
-            self.measure += "set resultArray w/= {wires[0]} <- ".format(wires=e.wires)
-            self.measure += self._observable_map[e.name].format(p=e.parameters, wires=e.wires)
+
+            # translate operation wire labels to the device's wire labels
+            device_wires = self.map_wires(e.wires)
+
+            self.measure += "set resultArray w/= {wires[0]} <- ".format(wires=device_wires.tolist())
+            self.measure += self._observable_map[e.name].format(p=e.parameters, wires=device_wires.tolist())
             self.measure += "            "
 
         self._source_code = PROGRAM.format(wires=self.num_wires, operations=self.prog, measurements=self.measure)

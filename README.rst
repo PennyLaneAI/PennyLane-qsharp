@@ -19,7 +19,7 @@ learning, automatic differentiation, and optimization of hybrid quantum-classica
 
 .. header-end-inclusion-marker-do-not-remove
 
-The documentation can be found at `https://pennylane-qsharp.readthedocs.io`_.
+The documentation can be found `here <https://pennylane-qsharp.readthedocs.io>`_.
 
 Features
 ========
@@ -67,7 +67,7 @@ PennyLane Q# requires the following libraries be installed:
 
 as well as the following Python packages:
 
-* `PennyLane <http://pennylane.readthedocs.io/>`_ >= 0.6.0
+* `PennyLane <http://pennylane.readthedocs.io/>`_ >= 0.11.0
 * `Q# <https://docs.microsoft.com/en-us/quantum/install-guide/python?view=qsharp-preview>`_
 
 If you currently do not have Python 3 installed, we recommend
