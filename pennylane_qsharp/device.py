@@ -34,8 +34,6 @@ Code details
 """
 import abc
 
-import numpy as np
-
 import qsharp
 
 from pennylane import Device
