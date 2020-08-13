@@ -34,8 +34,6 @@ Code details
 """
 import abc
 
-import numpy as np
-
 import qsharp
 
 from pennylane import Device
@@ -116,6 +114,7 @@ class QSharpDevice(Device):
 
         super().__init__(wires, shots)
         self.reset()
+        self.analytic = False
 
     @property
     def source(self):
@@ -139,7 +138,7 @@ class QSharpDevice(Device):
             device_wires = self.map_wires(e.wires)
 
             self.measure += "set resultArray w/= {wires[0]} <- ".format(wires=device_wires.tolist())
-            self.measure += self._observable_map[e.name].format(p=e.parameters, wires=device_wires.tolist())
+            self.measure += self._observable_map[e.name].format(wires=device_wires.tolist())
             self.measure += "            "
 
         self._source_code = PROGRAM.format(wires=self.num_wires, operations=self.prog, measurements=self.measure)

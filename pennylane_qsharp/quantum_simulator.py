@@ -56,7 +56,11 @@ class QuantumSimulatorDevice(QSharpDevice):
             self.results.append([1-2*int(i) for i in self.qs.simulate()])
 
     def expval(self, observable, wires, par):
-        return np.mean(np.array(self.results).T[wires[0]])
+        # translate the user wire labels to device wire labels
+        device_wires = self.map_wires(wires)
+        return np.mean(np.array(self.results).T[device_wires.labels[0]])
 
     def var(self, observable, wires, par):
-        return np.var(np.array(self.results).T[wires[0]])
+        # translate the user wire labels to device wire labels
+        device_wires = self.map_wires(wires)
+        return np.var(np.array(self.results).T[device_wires.labels[0]])
