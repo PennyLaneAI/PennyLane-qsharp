@@ -46,7 +46,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m pytest ${{ outputs.deviceTests }} --device=microsoft.simulator --tb=short --skip-ops --analytic=False --shots=20000 --cov=pennylane_qsharp --cov-report=xml
+          python -m pytest ${{ steps.get-tests.outputs.deviceTests }} --device=microsoft.simulator --tb=short --skip-ops --analytic=False --shots=20000 --cov=pennylane_qsharp --cov-report=xml
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
