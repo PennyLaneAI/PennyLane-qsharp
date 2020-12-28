@@ -43,7 +43,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pl-device-test --device=microsoft.simulator --tb=short --skip-ops --analytic=False --shots=20000 --cov=pennylane_qsharp --cov-report=xml
+          pytest /github/home/.local/lib/python3.7/site-packages/pennylane/devices/tests --device=microsoft.simulator --tb=short --skip-ops --analytic=False --shots=20000 --cov=pennylane_qsharp --cov-report=xml
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
