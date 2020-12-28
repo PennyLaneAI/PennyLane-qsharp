@@ -16,6 +16,9 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
+      - name: Upgrade git
+        run: apt install -y git
+
       - uses: actions/checkout@v2
 
       - name: Install dependencies
