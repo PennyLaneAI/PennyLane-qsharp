@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-    configure:
+  configure:
     runs-on: ubuntu-latest
     outputs:
       containerUser: ${{ steps.get-user.outputs.containerUser }}
