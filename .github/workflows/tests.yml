@@ -41,12 +41,9 @@ jobs:
           python setup.py bdist_wheel
           pip install dist/PennyLane*.whl
 
-      - id: get-tests
-        run: echo "::set-output name=deviceTests::`python -c 'from pennylane.devices.tests import get_device_tests; print(get_device_tests())'`"
-
       - name: Run tests
         run: |
-          python -m pytest ${{ steps.get-tests.outputs.deviceTests }} --device=microsoft.simulator --tb=short --skip-ops --analytic=False --shots=20000 --cov=pennylane_qsharp --cov-report=xml
+          /github/home/.local/bin/pl-device-test --device=microsoft.QuantumSimulator --tb=short --skip-ops --analytic=False --shots=20000 --cov=pennylane_qsharp --cov-report=xml
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
