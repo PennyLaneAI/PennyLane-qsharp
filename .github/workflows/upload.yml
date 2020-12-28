@@ -1,0 +1,47 @@
+name: Upload
+on:
+  release:
+    types: [created]
+
+jobs:
+  configure:
+    runs-on: ubuntu-latest
+    outputs:
+      containerUser: ${{ steps.get-user.outputs.containerUser }}
+
+    steps:
+      - id: get-user
+        run: echo "::set-output name=containerUser::`id -u`:`id -g`"
+
+  upload:
+    needs: configure
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/quantum/iqsharp-base:latest
+      options: --user ${{ needs.configure.outputs.containerUser }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build and install Plugin
+        run: |
+          python -m pip install --upgrade pip wheel
+          python setup.py bdist_wheel
+          pip install dist/PennyLane*.whl
+
+     - name: Install test dependencies
+       run: |
+         pip install wheel pytest pytest-cov pytest-mock --upgrade
+
+      - id: get-tests
+        run: echo "::set-output name=deviceTests::`python -c 'from pennylane.devices.tests import get_device_tests; print(get_device_tests())'`"
+
+      - name: Run tests
+        run: |
+          python -m pytest ${{ steps.get-tests.outputs.deviceTests }} --device=microsoft.QuantumSimulator --tb=short --skip-ops --analytic=False --shots=20000 --cov=pennylane_qsharp --cov-report=xml
+
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI }}
