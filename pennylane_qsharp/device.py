@@ -86,7 +86,7 @@ qsharp_observable_map = {
     "PauliY": 'MResetY(q[{wires[0]}]);\n',
     "PauliZ": 'MResetZ(q[{wires[0]}]);\n',
     "Hadamard": 'Ry(-pi/4, q[{wires[0]}]);\nMResetZ(q[{wires[0]}]);\n',
-    'Identity': 'MeasureIdentity(q[{wires[0]}]});\nReset(q[{wires[0]}]);\n'
+    'Identity': 'MeasureIdentity(q[{wires[0]}]);\nReset(q[{wires[0]}]);\n'
 }
 
 
