@@ -9,7 +9,7 @@ with open("pennylane_qsharp/_version.py") as f:
 
 requirements = [
     "qsharp",
-    "pennylane>=0.4"
+    "pennylane>=0.13"
 ]
 
 
