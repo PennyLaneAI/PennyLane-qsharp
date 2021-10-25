@@ -114,7 +114,6 @@ class QSharpDevice(Device):
 
         super().__init__(wires, shots)
         self.reset()
-        self.analytic = False
 
     @property
     def source(self):
