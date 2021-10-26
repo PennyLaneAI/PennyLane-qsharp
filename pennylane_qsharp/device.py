@@ -77,7 +77,7 @@ qsharp_operation_map = {
     # the following gates are provided by the PL-Q# plugin
     'S': 'S(q[{wires[0]}]);\n',
     'T': 'T(q[{wires[0]}]);\n',
-    'CCNOT': 'CNOT(q[{wires[0]}], q[{wires[1]}], q[{wires[2]}]);\n',
+    'CCNOT': 'CCNOT(q[{wires[0]}], q[{wires[1]}], q[{wires[2]}]);\n',
 }
 
 
@@ -114,7 +114,6 @@ class QSharpDevice(Device):
 
         super().__init__(wires, shots)
         self.reset()
-        self.analytic = False
 
     @property
     def source(self):
