@@ -21,9 +21,6 @@ jobs:
           python setup.py bdist_wheel
           pip install dist/PennyLane*.whl
 
-      - name: Install test dependencies
-        run: |
-          pip install wheel qsimcirq pytest pytest-cov pytest-mock --upgrade
 
 
       - name: Publish
