@@ -14,7 +14,7 @@ quantum machine learning capabilities.
 library for quantum programming using the .NET Q# quantum programming language. Resulting quantum programs
 can be executed using built in local simulators, or via the cloud-based Azure quantum simulator.
 
-`PennyLane <https://pennylane.readthedocs.io>`_ is a cross-platform Python library for quantum machine
+`PennyLane <https://pennylane.readthedocs.io>`__ is a cross-platform Python library for quantum machine
 learning, automatic differentiation, and optimization of hybrid quantum-classical computations.
 
 .. header-end-inclusion-marker-do-not-remove
@@ -65,7 +65,7 @@ PennyLane Q# requires the following libraries be installed:
 
 as well as the following Python packages:
 
-* `PennyLane <http://pennylane.readthedocs.io/>`_ >= 0.11.0
+* `PennyLane <http://pennylane.readthedocs.io/>`__ >= 0.11.0
 * `Q# <https://docs.microsoft.com/en-us/quantum/install-guide/python?view=qsharp-preview>`_
 
 If you currently do not have Python 3 installed, we recommend
@@ -91,7 +91,7 @@ To build the HTML documentation, go to the top-level directory and run
 
   $ make docs
 
-The documentation can then be found in the :file:`doc/_build/html/` directory.
+The documentation can then be found in the ``doc/_build/html/`` directory.
 
 .. installation-end-inclusion-marker-do-not-remove
 
