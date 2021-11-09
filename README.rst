@@ -58,8 +58,6 @@ Alternatively, you can install PennyLane Q# from the source code by navigating t
 Dependencies
 ~~~~~~~~~~~~
 
-.. highlight:: bash
-
 PennyLane Q# requires the following libraries be installed:
 
 * `Python <http://python.org/>`_ >= 3.6
