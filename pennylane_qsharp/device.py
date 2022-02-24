@@ -46,8 +46,8 @@ open Microsoft.Quantum.Convert;
 open Microsoft.Quantum.Measurement;
 
 operation Program () : Bool[] {{
-    mutable resultArray = new Result[{wires}];
-    using (q = Qubit[{wires}]) {{
+    mutable resultArray = [Zero, size = {wires}];
+    use q = Qubit[{wires}] {{
         // operations
         {operations}
         // measurements
