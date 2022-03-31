@@ -111,7 +111,7 @@ applications built on PennyLane and the Microsoft QDK.
 Authors
 =======
 
-PennyLane-Q# is the work of `many contributors <https://github.com/XanaduAI/PennyLane-qsharp/graphs/contributors>`_.
+PennyLane-Q# is the work of `many contributors <https://github.com/PennyLaneAI/PennyLane-qsharp/graphs/contributors>`_.
 
 If you are doing research using PennyLane and PennyLane-Q#, please cite `our paper <https://arxiv.org/abs/1811.04968>`_:
 
@@ -125,8 +125,8 @@ If you are doing research using PennyLane and PennyLane-Q#, please cite `our pap
 Support
 =======
 
-- **Source Code:** https://github.com/XanaduAI/pennylane-qsharp
-- **Issue Tracker:** https://github.com/XanaduAI/pennylane-qsharp/issues
+- **Source Code:** https://github.com/PennyLaneAI/pennylane-qsharp
+- **Issue Tracker:** https://github.com/PennyLaneAI/pennylane-qsharp/issues
 - **PennyLane Forum:** https://discuss.pennylane.ai
 
 If you are having issues, please let us know by posting the issue on our Github issue tracker, or
