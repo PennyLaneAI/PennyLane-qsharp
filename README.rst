@@ -1,9 +1,9 @@
 PennyLane Q# Plugin
 ###################
 
-.. image:: https://img.shields.io/readthedocs/pennylane-qiskit.svg?logo=read-the-docs&style=popout-square
+.. image:: https://readthedocs.com/projects/xanaduai-pennylane-qsharp/badge/?version=latest&style=flat-square
     :alt: Read the Docs
-    :target: https://pennylaneqsharp.readthedocs.io
+    :target: https://docs.pennylane.ai/projects/qsharp
 
 .. header-start-inclusion-marker-do-not-remove
 
