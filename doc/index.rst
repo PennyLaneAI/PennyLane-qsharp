@@ -23,7 +23,7 @@ Devices
 
 Currently, PennyLane-Q# provides one Q# device for PennyLane:
 
-.. devicegalleryitem::
+.. title-card::
     :name: 'microsoft.QuantumSimulator'
     :description: Q#'s simulator backend.
     :link: devices/quantum_simulator.html
