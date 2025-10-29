@@ -36,7 +36,7 @@ import abc
 
 import qsharp
 
-from pennylane import Device
+from pennylane.devices import Device
 
 from ._version import __version__
 
