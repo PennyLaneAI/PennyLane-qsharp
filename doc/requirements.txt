@@ -4,4 +4,4 @@ pygments-github-lexers
 pennylane
 sphinx-automodapi
 pennylane-sphinx-theme
-sphinx==8.1
+sphinx==9.0
